@@ -15,4 +15,6 @@ public interface StudentService {
     void updateStudent(Student student);
 
     Student queryStudentById(Integer id);
+
+
 }
