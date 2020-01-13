@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="com.fh.dao.StudentDao">
+    <select id="queryCount" resultType="long" parameterType="com.fh.entity.vo.TableSearch">
+        select count(*) from t_student
+    </select>
+
+    <select id="queryStudentList" parameterType="com.fh.entity.vo.TableSearch" resultType="com.fh.entity.vo.StudentVo">
+        SELECT * from t_student
+        where isDel = 0
+        limit #{start},#{length}
+    </select>
+
+    <update id="updateIsdel">
+        update t_student set isDel=1 where id=#{id}
+    </update>
+   <!-- <select id="queryStudentById" resultType="com.fh.entity.po.Student">
+    select * from t_student
+    where id = #{id}
+</select>-->
+</mapper>
